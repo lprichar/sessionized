@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Session, SessionizeApiResult, SessionizeService, Speaker } from '../sessionize-service.service';
+import { Session, SessionizeService, Speaker } from '../sessionize-service.service';
 
 @Component({
   selector: 'app-twitter-cards',
@@ -10,7 +10,7 @@ export class TwitterCardsComponent implements OnInit {
   public speakers: Speaker[] = null;
   public sessionsBySpeakerId: { id: string, session: Session }[] = [];
 
-  constructor(private sessionizeService: SessionizeService) { }
+  constructor(private sessionizeService: SessionizeService, private watchNowService: WatchNowService) { }
 
   ngOnInit(): void {
     this.sessionizeService.getSessionizeData().subscribe(sessionizeApiResult => {
@@ -25,7 +25,7 @@ export class TwitterCardsComponent implements OnInit {
   }
 
   public isMale(speaker: Speaker): boolean {
-    return !(speaker.firstName === 'Milecia' || (speaker.firstName === 'LaBrina'));
+    return this.watchNowService.isMale(speaker);
   }
 
 }

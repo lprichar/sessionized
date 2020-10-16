@@ -12,7 +12,7 @@
             <p>{{session.startsAt | date : 'MMM d'}} <a [routerLink]="['/now-showing', toSeconds(session.startsAt) ]">{{session.startsAt | date : 'shortTime'}}</a> EDT, <a [routerLink]="['/tracks', room.id]"
                 routerLinkActive="active">{{room.name}}</a></p>
             <a *ngIf="watchNowUrl" href="{{watchNowUrl}}" target="_blank" 
-              class="btn btn-small btn-primary">Watch Now</a>
+              class="btn btn-small btn-primary mr-2">Watch Now</a>
             <a *ngIf="registerUrl" href="{{registerUrl}}" target="_blank" 
               class="btn btn-small btn-primary">Register Now, it's Free!</a>
           </div>
@@ -24,6 +24,7 @@
         </div>
       </div>
       <p class="speaker-bio">{{speaker.bio}}</p>
+      <p><app-twitter-username [speaker]="speaker"></app-twitter-username></p>
     </div>
     <div *ngIf="!speaker">
       Loading...
