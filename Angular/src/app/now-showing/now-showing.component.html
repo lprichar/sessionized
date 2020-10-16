@@ -1,0 +1,27 @@
+<app-no-va-nav></app-no-va-nav>
+
+<div class="container-fluid">
+  <h1 class="change-title">
+    <span *ngIf="happeningNow === null && nextDate">{{date | date : 'shortTime' }} - <a routerLinkActive="active"
+        class="subtle-link" routerLink="/now-showing/{{nextDate.getTime()}}">{{nextDate | date : 'shortTime' }}</a>
+      EDT</span>
+    <span *ngIf="happeningNow === true && nextDate">Happening Now, {{date | date : 'shortTime' }} - <a
+        routerLinkActive="active" class="subtle-link"
+        routerLink="/now-showing/{{nextDate.getTime()}}">{{nextDate | date : 'shortTime' }}</a> EDT</span>
+    <span *ngIf="happeningNow === false">Up Next, Starting at {{date | date : 'shortTime' }} EDT</span>
+    <span (click)="changeTitle()"><i class="fa fa-edit"></i></span>
+  </h1>
+  <div class="row">
+    <div *ngFor="let room of rooms" class="col-xl-3">
+      <div class="track text-center">
+        <a [routerLink]="['/tracks', room.id]" class="btn btn-lg"
+          [ngClass]="{'btn-primary': activeRoom && activeRoom === room, 'btn-link': !activeRoom || activeRoom !== room }"
+          type="button" (click)="setRoom(room)">{{room.name}}</a>
+          <a *ngIf="!activeRoom || activeRoom !== room" (click)="setRoom(room)"><i class="fa fa-edit"></i></a>
+      </div>
+
+      <app-small-speaker [session]="sessionsByRoom[room.id]"></app-small-speaker>
+      <a target="_blank" [href]="getPlayUrl(room)"><i class="fa fa-play m-2"></i> Watch Now</a>
+    </div>
+  </div>
+</div>

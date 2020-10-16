@@ -1,0 +1,13 @@
+<table class="table">
+    <tr *ngFor="let session of sessions">
+        <td>{{session.title}}</td>
+        <td>{{toSeconds(session.startsAt) | date : 'shortTime'}}</td>
+        <td>{{toSeconds(session.endsAt) | date : 'shortTime'}}</td>
+        <td>{{roomNames[session.roomId]}}</td>
+        <td>
+            <span *ngFor="let speaker of session.speakers; last as isLast">
+                {{speakerNames[speaker]}}{{isLast ? '' : ', '}}
+            </span>
+        </td>
+    </tr>
+</table>

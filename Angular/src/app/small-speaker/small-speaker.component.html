@@ -1,0 +1,6 @@
+<div *ngIf="session">
+    <img [src]="session.speaker.profilePicture" class="img-fluid w-100" />
+    <h3>{{session.title}}</h3>
+    <p><a [routerLink]="['/speakers', session.speaker.id]">{{session.speaker.firstName}} {{session.speaker.lastName}}</a>: {{session.speaker.tagLine}}</p>
+    <p>{{session.description}}</p>
+</div>

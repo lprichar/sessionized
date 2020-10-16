@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row speaker-page">
+    <div *ngIf="speaker" class="speaker-card p-4 my-auto">
+      <div class="row">
+        <div class="col-md-8 align-items-center">
+          <a href="https://novacodecamp.org">
+            <div class="brand"><i class="fa fa-code"></i> Northern VA CodeCamp</div>
+          </a>
+          <h2>{{session.title}}</h2>
+          <p>{{session.description}}</p>
+          <div class="session-registration">
+            <p>Sept 26 <a [routerLink]="['/now-showing', toSeconds(session.startsAt) ]">{{session.startsAt | date : 'shortTime'}}</a> EDT, <a [routerLink]="['/tracks', room.id]"
+                routerLinkActive="active">{{room.name}}</a></p>
+            <a href="{{watchNowUrl}}" target="_blank" 
+              class="btn btn-small btn-primary">Watch Now</a>
+          </div>
+        </div>
+        <div class="col-md-4 speaker-area">
+          <img class="speaker-image" [src]="speaker.profilePicture" class="img-fluid w-100" />
+          <h1>{{speaker.firstName}} {{speaker.lastName}}</h1>
+          <p>{{speaker.tagLine}}</p>
+        </div>
+      </div>
+      <p class="speaker-bio">{{speaker.bio}}</p>
+    </div>
+    <div *ngIf="!speaker">
+      Loading...
+    </div>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+<app-no-va-nav></app-no-va-nav>
+
+<div class="container transition-screen">
+  <div class="row h-100">
+    <div class="col-sm-12 my-auto">
+      <div *ngIf="!msgBody" class="msg-picker">
+        <h2>Presets</h2>
+        <button type="button" class="btn btn-primary" (click)="gettingStarted()">Getting Started</button>
+        <button type="button" class="btn btn-primary" (click)="technicalDifficulties()">Technical Difficulties</button>
+        <button type="button" class="btn btn-primary" (click)="outToLunch()">Out to Lunch</button>
+        <h2>Custom</h2>
+        <form method="post" novalidate (ngSubmit)="showText()">
+          <div class="form-group">
+            <label for="msgTitle">Title</label>
+            <input id="msgTitle" type="text" class="form-control mr-sm-2" name="msgTitle" [(ngModel)]="msgTitleTemp"
+              placeholder="Put justa abita text here to show it in title area of card">
+          </div>
+          <div class="form-group">
+            <label for="msgBody">Body</label>
+            <input id="msgBody" type="text" class="form-control mr-sm-2" name="msgBody" [(ngModel)]="msgBodyTemp"
+              placeholder="Enter lotsa text here to show it in body of card">
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">Show It</button>
+          </div>
+        </form>
+      </div>
+      <div *ngIf="msgBody" class="card bg-dark" (click)="reset()">
+        <div class="card-title">{{msgTitle}}</div>
+        <div class="card-text">{{msgBody}}</div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+.fa-edit {
+    color: #888;
+}
+.container-fluid {
+  padding-top: 20px;
+}
+.change-title {
+  .fa-edit {
+    font-size: 20px;
+    margin-left: 10px;
+  }
+}
+.track {
+  margin-bottom: 10px;
+  .fa-edit {
+    font-size: 12px;
+    position: relative;
+    top: 4px;
+  }
+}

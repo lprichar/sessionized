@@ -1,0 +1,57 @@
+/* You can add global styles to this file, and also import other style files */
+$highlight-color: #fed136;
+
+body {
+  background-color: #1a1d21;
+  color: #ddd;
+}
+.table {
+  color: #ddd;
+}
+a {
+  color: $highlight-color;
+}
+a.subtle-link {
+  color: #fff;
+}
+a.subtle-link:hover {
+  color: $highlight-color;
+}
+a:hover {
+  color: #fce497;
+}
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+  background-color: #fec503;
+  border-color: #f6bf01;
+}
+.btn-primary {
+  background-color: $highlight-color;
+  border-color: $highlight-color;
+  color: #222;
+}
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open .dropdown-toggle.btn-primary {
+  color: #ffffff;
+  background-color: #fec503;
+  border-color: #f6bf01;
+  box-shadow: none;
+}
+.btn-link {
+  color: $highlight-color;
+}
+.btn-link:hover,
+.btn-link:focus,
+.btn-link:active,
+.btn-link.active,
+.open .dropdown-toggle.btn-primary {
+  color: #ffffff;
+}
+.brand {
+  color: $highlight-color;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial;
+  text-transform: uppercase;
+}
+

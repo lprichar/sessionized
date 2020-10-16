@@ -1,0 +1,30 @@
+<app-no-va-nav></app-no-va-nav>
+
+<div class="container">
+  <h1>Tweets To Send</h1>
+  <div *ngIf="speakers">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Tweet</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let speaker of speakers">
+          <td><a [routerLink]="['/speakers', speaker.id]" routerLinkActive="active">{{speaker.firstName}}
+              {{speaker.lastName}}</a></td>
+          <td>
+            We're proud of our speaker <app-twitter-username [speaker]="speaker"></app-twitter-username>,
+            {{speaker.tagLine}}. {{isMale(speaker) ? "He'll" : "She'll"}} be speaking on
+            "{{sessionsBySpeakerId[speaker.id].title}}" at
+            {{sessionsBySpeakerId[speaker.id].startsAt | date : 'shortTime'}} ETD on 9/26. Details:
+            https://novacodecamp.org/app/speakers/{{speaker.id}}.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div *ngIf="!speakers">
+    Loading...
+  </div>
+</div>

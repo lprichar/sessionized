@@ -1,0 +1,30 @@
+<app-no-va-nav></app-no-va-nav>
+
+<div class="container">
+  <div class="row m-5" *ngIf="rooms">
+    <div class="col-md-3 text-center" *ngFor="let room of rooms">
+      <a [routerLink]="['/tracks', room.id]" class="btn"
+        [ngClass]="{'btn-primary': activeRoom.name === room.name, 'btn-link': activeRoom.name !== room.name }"
+        type="button">{{room.name}}</a>
+    </div>
+  </div>
+
+  <div *ngIf="activeRoom != null">
+    <div *ngFor="let session of sessions">
+      <div class="row session">
+        <div class="col-md-9">
+          <h1 class="time"><a class="subtle-link" [routerLink]="['/now-showing', toSeconds(session.startsAt) ]">{{session.startsAt | date : 'shortTime'}}</a></h1>
+          <h4 class="sessionTitle"><a [routerLink]="['/speakers', session.speaker.id]"
+              routerLinkActive="active">{{session.title}}</a></h4>
+          <p>{{session.description}}</p>
+        </div>
+        <div class="col-md-3">
+          <img class="speakerImage img-fluid w-100" [src]="session.speaker.profilePicture" />
+          <h2>{{session.speaker.firstName}} {{session.speaker.lastName}}</h2>
+          <div class="tagline">{{session.speaker.tagLine}}</div>
+        </div>
+      </div>
+      <hr>
+    </div>
+  </div>
+</div>
