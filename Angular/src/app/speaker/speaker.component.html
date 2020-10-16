@@ -9,10 +9,12 @@
           <h2>{{session.title}}</h2>
           <p>{{session.description}}</p>
           <div class="session-registration">
-            <p>Sept 26 <a [routerLink]="['/now-showing', toSeconds(session.startsAt) ]">{{session.startsAt | date : 'shortTime'}}</a> EDT, <a [routerLink]="['/tracks', room.id]"
+            <p>{{session.startsAt | date : 'MMM d'}} <a [routerLink]="['/now-showing', toSeconds(session.startsAt) ]">{{session.startsAt | date : 'shortTime'}}</a> EDT, <a [routerLink]="['/tracks', room.id]"
                 routerLinkActive="active">{{room.name}}</a></p>
-            <a href="{{watchNowUrl}}" target="_blank" 
+            <a *ngIf="watchNowUrl" href="{{watchNowUrl}}" target="_blank" 
               class="btn btn-small btn-primary">Watch Now</a>
+            <a *ngIf="registerUrl" href="{{registerUrl}}" target="_blank" 
+              class="btn btn-small btn-primary">Register Now, it's Free!</a>
           </div>
         </div>
         <div class="col-md-4 speaker-area">

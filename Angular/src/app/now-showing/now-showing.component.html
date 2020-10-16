@@ -21,7 +21,7 @@
       </div>
 
       <app-small-speaker [session]="sessionsByRoom[room.id]"></app-small-speaker>
-      <a target="_blank" [href]="getPlayUrl(room)"><i class="fa fa-play m-2"></i> Watch Now</a>
+      <a *ngIf="getPlayUrl(room)" target="_blank" [href]="getPlayUrl(room)"><i class="fa fa-play m-2"></i> Watch Now</a>
     </div>
   </div>
 </div>

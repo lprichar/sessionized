@@ -21,6 +21,7 @@ export class SpeakerComponentComponent implements OnInit {
   public session: Session;
   public room: Room;
   public watchNowUrl: string;
+  public registerUrl: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -29,7 +30,9 @@ export class SpeakerComponentComponent implements OnInit {
     private titleService: Title,
     private dateConverterService: DateConverterService,
     private watchNowService: WatchNowService
-  ) {}
+  ) {
+    this.registerUrl = this.watchNowService.registerUrl;
+  }
 
   public toSeconds(startsAt: string): number {
     return this.dateConverterService.toTime(startsAt);
