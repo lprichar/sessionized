@@ -3,37 +3,20 @@
 <div class="container">
   <h1>Tracks</h1>
   <div class="row">
-    <div class="col-sm-2 m-2">
-      <a routerLink="/tracks/15355" routerLinkActive="active" class="btn btn-primary"><i class="fa fa-info"></i>Web</a>
-      <a target="_blank"
-        href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_NTdmMDllYjgtYWMzZi00MWQ5LThjNGYtNmYwOGE1MWVjZjI2%40thread.v2/0?context=%7b%22Tid%22%3a%22522429d4-f37f-4713-a7d9-58d6450b01b6%22%2c%22Oid%22%3a%22b821e4e9-0c4f-45bd-962a-71dac376dd03%22%2c%22IsBroadcastMeeting%22%3atrue%7d"
-        class="btn btn-primary m-2"><i class="fa fa-play"></i></a>
-    </div>
-    <div class="col-sm-2 m-2">
-      <a routerLink="/tracks/15356" routerLinkActive="active" class="btn btn-primary"><i class="fa fa-info"></i>Data</a>
-      <a target="_blank"
-        href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_ZjgzZjE2MmYtZjZiNC00YTM3LWEyMWQtOThmOGNjMDEwMzg5%40thread.v2/0?context=%7b%22Tid%22%3a%22522429d4-f37f-4713-a7d9-58d6450b01b6%22%2c%22Oid%22%3a%22b821e4e9-0c4f-45bd-962a-71dac376dd03%22%2c%22IsBroadcastMeeting%22%3atrue%7d"
-        class="btn btn-primary m-2"><i class="fa fa-play"></i></a>
-    </div>
-    <div class="col-sm-2 m-2">
-      <a routerLink="/tracks/15357" routerLinkActive="active" class="btn btn-primary"><i
-          class="fa fa-info"></i>Cloud</a>
-      <a target="_blank"
-        href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_ZGJlZDU3ZWItYmFiYi00ZmY4LTlmNWMtNjM5ZWJlYmI1OGM5%40thread.v2/0?context=%7b%22Tid%22%3a%22522429d4-f37f-4713-a7d9-58d6450b01b6%22%2c%22Oid%22%3a%22b821e4e9-0c4f-45bd-962a-71dac376dd03%22%2c%22IsBroadcastMeeting%22%3atrue%7d"
-        class="btn btn-primary m-2"><i class="fa fa-play"></i></a>
-    </div>
-    <div class="col-sm-2 m-2">
-      <a routerLink="/tracks/15358" routerLinkActive="active" class="btn btn-primary"><i class="fa fa-info"></i>/etc</a>
-      <a target="_blank"
-        href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_M2E4M2E2MmQtZTE5Ny00MDJhLTk5YjEtOGFmNTFiZjMxZjMy%40thread.v2/0?context=%7b%22Tid%22%3a%22522429d4-f37f-4713-a7d9-58d6450b01b6%22%2c%22Oid%22%3a%22b821e4e9-0c4f-45bd-962a-71dac376dd03%22%2c%22IsBroadcastMeeting%22%3atrue%7d"
-        class="btn btn-primary m-2"><i class="fa fa-play"></i></a>
+    <div *ngFor="let room of rooms" class="col-sm-2 m-2">
+      <a [routerLink]="['/tracks/', room.id]" routerLinkActive="active" class="btn btn-primary">
+        <i class="fa fa-info"></i>{{room.name.replace('Track', '')}}
+      </a>
+      <a *ngIf="getPlayUrl(room)" target="_blank" [href]="getPlayUrl(room)" class="btn btn-primary m-2">
+        <i class="fa fa-play"></i>
+      </a>
     </div>
   </div>
 
   <h1>Times</h1>
   <div class="row">
     <div class="col-sm-2" *ngFor="let hour of hours">
-      <a routerLink="/now-showing/{{hour.getTime()}}" 
+      <a routerLink="/now-showing/{{hour.getTime()}}"
         class="btn btn-primary btn-block m-2">{{hour | date : 'shortTime'}}</a>
     </div>
   </div>
