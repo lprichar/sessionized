@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Session, SessionizeService, Speaker } from '../sessionize-service.service';
+import { WatchNowService } from '../watch-now.service';
 
 @Component({
   selector: 'app-twitter-cards',
